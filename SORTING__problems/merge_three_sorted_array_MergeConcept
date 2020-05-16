@@ -1,0 +1,135 @@
+/*
+  
+  Given three sorted arrays A, B and C of size N, M and P respectively. The task is to merge them into a single array which must be sorted in increasing order.
+
+Input:
+First line of input contains number of testcases T. For each testcase, first line of input contains size of three arrays N, M and P. Next three lines contains N, M and P elements for arrays.
+
+Output:
+Output the merged array.
+
+Constraints:
+1 <= T <= 100
+1 <= N, M, P <= 106
+1 <= A[i], B[i], C[i] <= 106
+
+Example:
+Input:
+1
+4 5 6
+1 2 3 4
+1 2 3 4 5
+1 2 3 4 5 6
+
+Output:
+1 1 1 2 2 2 3 3 3 4 4 4 5 5 6
+  
+    */
+    
+    
+    // here i uses the concept of the MERGE as we do in merge sort....so it uses extra space for new array
+    
+    // you can see other solution for this using heap in this list problem also
+    
+    
+ #include<bits/stdc++.h>
+using namespace std;
+#define lli long long int
+#define pr pair<lli,lli>
+
+int main() {
+	//code
+	
+	lli t;
+	cin>>t;
+	while(t--)
+	{
+	    lli a,b,c;   // size of all three array
+	    cin>>a>>b>>c;
+	    
+	    lli arr1[a],arr2[b],arr3[c];
+	    
+	    // taking input for three sorted arrays
+	    
+	    for(lli i =0;i<a;i++)
+	    {
+	        cin>>arr1[i];
+	    }
+	    for(lli i =0;i<b;i++)
+	    {
+	        cin>>arr2[i];
+	    }
+	    for(lli i =0;i<c;i++)
+	    {
+	        cin>>arr3[i];
+	    }
+	    
+	     lli final[a+b];
+	     lli final1[a+b+c];
+	     
+	     lli i=0,j=0,k=0;
+	     while(i<a && j<b)
+	     {
+	         if(arr1[i]<arr2[j])
+	         {
+	             final[k++]=arr1[i++];
+	         }
+	         else
+	         {
+	             final[k++]=arr2[j++];
+	         }
+	     }
+	     
+	     
+	    
+	    
+	    
+	    while(i<a)
+	    {
+	        final[k++]=arr1[i++];
+	    }
+	    
+	    while(j<b)
+	    {
+	        final[k++]=arr2[j++];
+	    }
+	    
+	     
+	    
+	    
+	    i=0;
+	    j=0;
+	    lli l=0;
+	    while(i<k && j<c)
+	    {
+	        if(final[i]<arr3[j])
+	        {
+	            final1[l++]=final[i++];
+	        }
+	        else
+	        final1[l++]=arr3[j++];
+	    }
+	    
+	    while(i<k)
+	    {
+	        final1[l++]=final[i++];
+	    }
+	    while(j<c)
+	    {
+	        final1[l++]=arr3[j++];
+	    }
+	    
+	    
+	    for(lli i=0;i<l;i++)
+	    cout<<final1[i]<<" ";
+	    
+	    cout<<endl;
+	
+	
+	}
+	return 0;
+}
+    
+    
+    
+    
