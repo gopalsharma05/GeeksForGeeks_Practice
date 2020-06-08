@@ -44,3 +44,87 @@ Input:
 Output:
 (1 1 6)(1 2 5)(1 7)(2 6)
 Empty
+
+
+*/
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void backtrack(int a[],int n,int sum,set<vector<int> > &s,vector<int> v,int i)
+{
+    if(sum==0)
+    {
+        s.insert(v);
+        return ;
+    }
+
+    if(i>=n ||  sum<0 || a[i]>sum)
+    return ;
+
+    v.push_back(a[i]);
+    backtrack(a,n,sum-a[i],s,v,i+1);
+    v.pop_back();
+    backtrack(a,n,sum,s,v,i+1);
+}
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    int a[n];
+
+	    for(int i=0;i<n;i++)
+	    cin>>a[i];
+
+	    sort(a,a+n);
+
+	    set<vector<int> > s;
+	    vector<int> v;
+
+	    int sum;
+	    cin>>sum;
+
+	    backtrack(a,n,sum,s,v,0);
+
+
+	    if(s.size())
+	    {
+            for(auto x:s)
+            {
+                vector<int> v=x;
+                cout<<"(";
+                int n=v.size();
+                for(int i=0;i<n;i++)
+                {
+
+                    cout<<v[i];
+                    if(i!=n-1)
+                    cout<<" ";
+
+                }
+
+                cout<<")";
+
+
+
+
+            }
+
+
+            cout<<"\n";
+	    }
+	    else
+	    {
+	        cout<<"Empty\n";
+	    }
+
+
+	}
+	return 0;
+}
