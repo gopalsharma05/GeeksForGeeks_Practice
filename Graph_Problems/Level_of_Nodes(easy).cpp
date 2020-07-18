@@ -52,7 +52,8 @@ Testcases 1: In the given graph(above), 7 is at 3rd level starting from source n
         */
 
 
-
+// APPROACH-> USED DFS with map for storing the level. You can also use BFS by maintaining the level of each node and use
+// visited array
 
 #include<bits/stdc++.h>
 using namespace std;
