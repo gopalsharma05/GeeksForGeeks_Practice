@@ -6,8 +6,7 @@
 The width of a binary tree is the number of vertical paths in that tree.
 
 
-
-The above tree contains 6 vertical lines which is the required vertical width of the tree.
+ 
 
 Input:
 First line of input contains the number of test cases T. For each test case, there will be only a single line of input which is a string representing
